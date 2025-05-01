@@ -34,24 +34,33 @@ const router = Router()
  *                          type: string
  *                      password:
  *                          type: string
+ *                      role:
+ *                          type: string
+ *                          default: user
+ *                          example: user
  *     responses:
  *       '202':
  *         description: Успешный ответ
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   _id:
+ *               type: object
+ *               properties:
+ *                  user:
+ *                      type: object
+ *                      properties:
+ *                          _id:
+ *                              type: string
+ *                          username:
+ *                              type: string
+ *                          email:
+ *                              type: string
+ *                          password:
+ *                              type: string
+ *                  token:
  *                     type: string
- *                   username:
+ *                  message:
  *                     type: string
- *                   email:
- *                     type: string
- *                   password:
- *                      type: string
  *       '400':
  *         description: Ошибка сервера
  *         content:
