@@ -1,5 +1,7 @@
-import {Request, Response} from "express";
+import e, {Request, Response} from "express";
 import User from "../models/User";
+import jwt from "jsonwebtoken";
+import {JWT_SECRET} from "../config/constants";
 
 export const createUser = async (req: Request, res: Response) => {
     try {
@@ -21,16 +23,18 @@ export const getUsers = async (req: Request, res: Response) => {
 }
 
 export const deleteUser = async (req: Request, res: Response) => {
+
+
     const { userId } = req.body; //userId из тела запроса
 
     try {
         const deletedUser = await User.findByIdAndDelete(userId)
         if (!deletedUser) {
-            res.status(404).json({message: 'No user with this id!'})
+            return res.status(404).json({message: 'No user with this id!'})
         }
-        res.status(202).send(deletedUser);
+        return res.status(202).send(deletedUser);
     } catch (e) {
-        res.status(400).json({ message: (e as Error).message });
+        return res.status(400).json({ message: (e as Error).message });
     }
 }
 

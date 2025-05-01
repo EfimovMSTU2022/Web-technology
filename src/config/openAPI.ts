@@ -7,6 +7,15 @@ const swaggerDefinition = {
         title: "MAU web technologies server",
         version: "1.0.0",
         description: "API documentation for my server",
+    },
+    components: {
+        securitySchemes: {
+            bearerAuth: {
+                type: "http",
+                scheme: "bearer",
+                bearerFormat: "JWT",
+            }
+        }
     }
 };
 
