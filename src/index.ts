@@ -18,6 +18,6 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec.swaggerSpec));
 app.use("/auth", authRouter);
 app.use("/users", usersRouter);
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`Example app listening on port ${port}`)
 })
